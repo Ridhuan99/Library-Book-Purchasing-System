@@ -9,6 +9,51 @@
   font-size: 20px;
 }
 
-.homepage-rightside{
-  background-color: #16697;
+.rightside{
+  background-color: #2d6187;
+  margin: 0;
+  padding: 25px;
+}
+
+.leftside{
+  text-align: center;
+}
+
+
+.title{
+  padding: 30px;
+  margin-top:5%;
+  width: 75%;
+  font-weight: bold;
+}
+
+h1{
+  font-size: 300%;
+  font-family: 'Playfair Display SC', serif;
+}
+h5{
+  color: #625D5D;
+}
+
+.panel{
+  margin-top:50%;
+  margin-bottom:50%;
+}
+
+.card{
+  padding: 10px;
+  margin:10px;
+}
+
+.card-img-top{
+  width:100%;
+  height: 150px;
+}
+
+.reqdash{
+  position: absolute;
+   top: 100px;
+   left: 0;
+   right: 0;
+   bottom: 0;
 }

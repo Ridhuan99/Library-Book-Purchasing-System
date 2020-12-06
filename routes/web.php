@@ -17,6 +17,19 @@ Route::get('/', function () {
     return view('homepage');
 })->name('homepage');
 
+Route::get('/requester-dashboard', function () {
+    return view('requester.dashboard');
+})->name('requester-dashboard');
+
+Route::get('/admin-dashboard', function () {
+    return view('library-admin.dashboard');
+})->name('admin-dashboard');
+
+Route::get('/dean-dashboard', function () {
+    return view('dean.dashboard');
+})->name('dean-dashboard');
+
+
 Route::get('/request-form', function () {
     return view('requester.request-form');
 })->name('requester.request-form');
