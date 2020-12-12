@@ -57,3 +57,17 @@ h5{
    right: 0;
    bottom: 0;
 }
+
+.form-page{
+  background-color: #2d6187;
+  color: white;
+}
+
+.info-section{
+  color:black;
+}
+
+.info-card{
+  background-color: #f5f5f0;
+  padding-bottom: 0;
+}

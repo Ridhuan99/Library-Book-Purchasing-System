@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ PurchasesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,6 @@ Route::get('/dean-dashboard', function () {
 Route::get('/request-form', function () {
     return view('requester.request-form');
 })->name('requester.request-form');
+
+
+Route::resource('purchases', PurchasesController::class);
