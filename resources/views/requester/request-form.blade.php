@@ -8,28 +8,34 @@
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid first name is required.
-                    </div>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="etc: Ng Yan Yan" value="" required>
+                    @error ('name')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
 
                 <div class="col-sm-6 mb-3">
                     <label for="mmu_id">MMU ID:</label>
-                    <input type="text" class="form-control" id="mmu_id" name="mmu_id" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid MMU ID is required.
-                    </div>
+                    <input type="text" class="form-control" id="mmu_id" name="mmu_id" placeholder="etc: 1101108567" value="" required>
+                    @error ('mmu_id')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="extension_number">Extension Number:</label>
-                    <input type="text" class="form-control" id="extension_number" name="extension_number" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid extension number is required.
-                    </div>
+                    <input type="text" class="form-control" id="extension_number" name="extension_number" placeholder="" value="" >
+                    @error ('extension_number')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
                 <div class="col-sm-6 mb-3">
                     <label for="faculty">Faculty</label>
@@ -49,9 +55,11 @@
                         <option>VICE PRESIDENT, ACADEMIC(VP ACAD)</option>
                         <option>VICE PRESIDENT, R&d AND INNOVATION(VP RDI)</option>
                     </select>
-                    <div class="invalid-feedback">
-                        Please select a faculty.
-                    </div>
+                    @error ('faculty')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
             </div>
 
@@ -64,9 +72,11 @@
                         <option>Printed</option>
                         <option>e-book</option>
                     </select>
-                    <div class="invalid-feedback">
-                        Please select a faculty.
-                    </div>
+                    @error ('format')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
                 <div class="col-sm-6 mb-3">
                     <label for="campus">Campus</label>
@@ -76,9 +86,11 @@
                         <option>Melaka</option>
                         <option>Nusajaya</option>
                     </select>
-                    <div class="invalid-feedback">
-                        Please select a faculty.
-                    </div>
+                    @error ('campus')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
             </div>
 
@@ -91,9 +103,11 @@
                         <option>Reference</option>
                         <option>Open-shelf</option>
                     </select>
-                    <div class="invalid-feedback">
-                        Please select a faculty.
-                    </div>
+                    @error ('category')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
 
                 <div class="col-sm-6 mb-3">
@@ -106,9 +120,11 @@
                         <option>MMU Research Library</option>
                         <option>MMU Cyberjaya Library</option>
                     </select>
-                    <div class="invalid-feedback">
-                        Please select a faculty.
-                    </div>
+                    @error ('library')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
             </div>
 
@@ -116,18 +132,22 @@
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid extension number is required.
-                    </div>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="etc: Introduction to Java" value="" required>
+                    @error ('title')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
 
                 <div class="col-sm-6 mb-3">
                     <label for="isbn">ISBN</label>
-                    <input type="text" class="form-control" id="isbn" name="isbn" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid extension number is required.
-                    </div>
+                    <input type="text" class="form-control" id="isbn" name="isbn" placeholder="etc: 978-3-16-148410-0" value="" required>
+                    @error ('isbn')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
             </div>
 
@@ -135,54 +155,66 @@
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="author">Author</label>
-                    <input type="text" class="form-control" id="author" name="author" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid extension number is required.
-                    </div>
+                    <input type="text" class="form-control" id="author" name="author" placeholder="etc: Megan Miranda" value="" required>
+                    @error ('author')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
 
                 <div class="col-sm-6 mb-3">
                     <label for="publisher">Publisher</label>
                     <input type="text" class="form-control" id="publisher" name="publisher" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid extension number is required.
-                    </div>
+                    @error ('publisher')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="subject_code">Subject Code</label>
-                    <input type="text" class="form-control" id="subject_code" name="subject_code" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid extension number is required.
-                    </div>
+                    <input type="text" class="form-control" id="subject_code" name="subject_code" placeholder="etc: MUR223J" value="" required>
+                    @error ('subject_code')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
 
                 <div class="col-sm-6 mb-3">
                     <label for="quantity">Quantity</label>
-                    <input type="number" class="form-control" id="quantity" name="quantity" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid extension number is required.
-                    </div>
+                    <input type="number" class="form-control" id="quantity" name="quantity" placeholder="etc: 10" value="" required>
+                    @error ('quatity')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="total_students">Total Students</label>
-                    <input type="number" class="form-control" id="total_students" name="total_students" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid extension number is required.
-                    </div>
+                    <input type="number" class="form-control" id="total_students" name="total_students" placeholder="etc: 50" value="" >
+                    @error ('total_students')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
 
                 <div class="col-sm-6 mb-3">
-                    <label for="price">Price (In Ringgit)</label>
-                    <input type="text" class="form-control" id="price" name="price" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid extension number is required.
-                    </div>
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="etc: RM 32.20" value="" >
+                    @error ('price')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
             </div>
 
@@ -190,6 +222,11 @@
                 <div class="col-sm-12 mb-3 remark-sec">
                     <label for="remark">Remark</label>
                     <textarea class="form-control" id="remark" name="remark" rows="8" cols="100"></textarea>
+                    @error ('remark')
+                      <div class="alert alert-danger m-1">
+                          {{$message}}
+                      </div>
+                    @enderror
                 </div>
             </div>
 
@@ -214,7 +251,7 @@
                 <div class="col-12 mb-3">
                     <label for="firstName">URL</label>
                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                      <div class="invalid-feedback">
+                      <div class="alert alert-danger">
                           Valid extension number is required.
                       </div>
                       <button class="btn btn-danger btn-lg btn-block mt-3" type="submit">Search</button>

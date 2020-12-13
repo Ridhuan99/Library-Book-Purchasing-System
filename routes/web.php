@@ -14,6 +14,10 @@ use App\Http\Controllers\ PurchasesController;
 |
 */
 
+Route::get('/result', function () {
+    return view('requester.result');
+})->name('result');
+
 Route::get('/', function () {
     return view('homepage');
 })->name('homepage');

@@ -35,6 +35,27 @@ class PurchasesController extends Controller
      */
     public function store(Request $request)
     {
+          $validated = $request->validate([
+          'name' => 'required',
+          'mmu_id' => 'bail|required|size:10',
+          'extension_number'=> 'bail|nullable|numeric',
+          'faculty' => 'required',
+          'format' => 'required',
+          'campus' => 'required',
+          'category' => 'required',
+          'library' => 'required',
+          'title' => 'required',
+          'isbn' => 'bail|required|min:9|max:17',
+          'author' => 'required',
+          'publisher' => 'required',
+          'subject_code' => 'required',
+          'quantity' => 'bail|required|numeric',
+          'total_students' => 'bail|nullable|numeric',
+          'price' => 'bail|nullable|numeric',
+          'remark' => 'nullable',
+
+        ]);
+
         $purchase = new Purchases();
         $purchase->name = $request->input('name');
         $purchase->mmu_id = $request->input('mmu_id');
@@ -55,7 +76,7 @@ class PurchasesController extends Controller
         $purchase->remark = $request->input('remark');
         $purchase->save();
 
-
+        return redirect('requester.request-form');
 
     }
 
