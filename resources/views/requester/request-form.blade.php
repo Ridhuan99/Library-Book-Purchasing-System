@@ -3,12 +3,17 @@
 @section('content')
 <div class="form-page row">
     <div class="form-section col-sm-8">
+      @if(session('status'))
+        <div class="alert alert-success m-4">
+          {{session('status')}}
+        </div>
+      @endif
         <form class="needs-validation p-4" action="{{route('purchases.store')}}" method="post">
           @csrf
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="etc: Ng Yan Yan" value="" required>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="etc: Ng Yan Yan" value="{{old('name')}}" required>
                     @error ('name')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -18,7 +23,7 @@
 
                 <div class="col-sm-6 mb-3">
                     <label for="mmu_id">MMU ID:</label>
-                    <input type="text" class="form-control" id="mmu_id" name="mmu_id" placeholder="etc: 1101108567" value="" required>
+                    <input type="text" class="form-control" id="mmu_id" name="mmu_id" placeholder="etc: 1101108567" value="{{old('mmu_id')}}" required>
                     @error ('mmu_id')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -30,7 +35,7 @@
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="extension_number">Extension Number:</label>
-                    <input type="text" class="form-control" id="extension_number" name="extension_number" placeholder="" value="" >
+                    <input type="text" class="form-control" id="extension_number" name="extension_number" placeholder="" value="{{old('extension_number')}}" >
                     @error ('extension_number')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -39,7 +44,7 @@
                 </div>
                 <div class="col-sm-6 mb-3">
                     <label for="faculty">Faculty</label>
-                    <select class="custom-select d-block w-100" id="faculty" name="faculty" required>
+                    <select class="custom-select d-block w-100" id="faculty" name="faculty"  required>
                         <option value="">Choose...</option>
                         <option>FACULTY OF APPLIED COMMUNICATION(FAC)</option>
                         <option>FACULTY OF BUSINESS(FOB)</option>
@@ -132,7 +137,7 @@
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="etc: Introduction to Java" value="" required>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="etc: Introduction to Java" value="{{old('title')}}" required>
                     @error ('title')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -142,7 +147,7 @@
 
                 <div class="col-sm-6 mb-3">
                     <label for="isbn">ISBN</label>
-                    <input type="text" class="form-control" id="isbn" name="isbn" placeholder="etc: 978-3-16-148410-0" value="" required>
+                    <input type="text" class="form-control" id="isbn" name="isbn" placeholder="etc: 978-3-16-148410-0" value="{{old('isbn')}}" required>
                     @error ('isbn')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -155,7 +160,7 @@
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="author">Author</label>
-                    <input type="text" class="form-control" id="author" name="author" placeholder="etc: Megan Miranda" value="" required>
+                    <input type="text" class="form-control" id="author" name="author" placeholder="etc: Megan Miranda" value="{{old('author')}}" required>
                     @error ('author')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -165,7 +170,7 @@
 
                 <div class="col-sm-6 mb-3">
                     <label for="publisher">Publisher</label>
-                    <input type="text" class="form-control" id="publisher" name="publisher" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="publisher" name="publisher" placeholder="" value="{{old('publisher')}}" required>
                     @error ('publisher')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -177,7 +182,7 @@
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="subject_code">Subject Code</label>
-                    <input type="text" class="form-control" id="subject_code" name="subject_code" placeholder="etc: MUR223J" value="" required>
+                    <input type="text" class="form-control" id="subject_code" name="subject_code" placeholder="etc: MUR223J" value="{{old('subject_code')}}" required>
                     @error ('subject_code')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -187,7 +192,7 @@
 
                 <div class="col-sm-6 mb-3">
                     <label for="quantity">Quantity</label>
-                    <input type="number" class="form-control" id="quantity" name="quantity" placeholder="etc: 10" value="" required>
+                    <input type="number" class="form-control" id="quantity" name="quantity" placeholder="etc: 10" value="{{old('quantity')}}" required>
                     @error ('quatity')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -199,7 +204,7 @@
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="total_students">Total Students</label>
-                    <input type="number" class="form-control" id="total_students" name="total_students" placeholder="etc: 50" value="" >
+                    <input type="number" class="form-control" id="total_students" name="total_students" placeholder="etc: 50" value="{{old('total_students')}}" >
                     @error ('total_students')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -209,7 +214,7 @@
 
                 <div class="col-sm-6 mb-3">
                     <label for="price">Price</label>
-                    <input type="text" class="form-control" id="price" name="price" placeholder="etc: RM 32.20" value="" >
+                    <input type="text" class="form-control" id="price" name="price" placeholder="etc: 32.20" value="{{old('price')}}" >
                     @error ('price')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -221,7 +226,7 @@
             <div class="row">
                 <div class="col-sm-12 mb-3 remark-sec">
                     <label for="remark">Remark</label>
-                    <textarea class="form-control" id="remark" name="remark" rows="8" cols="100"></textarea>
+                    <textarea class="form-control" id="remark" name="remark" rows="8" cols="100" value="{{old('remark')}}"></textarea>
                     @error ('remark')
                       <div class="alert alert-danger m-1">
                           {{$message}}
@@ -249,11 +254,11 @@
 
               <form class="needs-validation" novalidate>
                 <div class="col-12 mb-3">
-                    <label for="firstName">URL</label>
+                    <label for="url">URL</label>
                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                      <div class="alert alert-danger">
+                      {{-- <div class="alert alert-danger">
                           Valid extension number is required.
-                      </div>
+                      </div> --}}
                       <button class="btn btn-danger btn-lg btn-block mt-3" type="submit">Search</button>
                 </div>
               </form>

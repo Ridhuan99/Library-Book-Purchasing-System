@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePurchasesTable extends Migration
+class CreatePurchaseDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreatePurchasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('purchases', function (Blueprint $table) {
-          $table->id();
+        Schema::create('purchase_details', function (Blueprint $table) {
+          $table->increments('id');
           $table->text("name");
           $table->text("mmu_id");
           $table->text("extension_number")->nullable();
@@ -32,7 +32,12 @@ class CreatePurchasesTable extends Migration
           $table->integer("total_students")->nullable();
           $table->double('price', 8, 2)->nullable();
           $table->longText('remark')->nullable();
+          $table->text("status")->default('pending');
+          $table->text("progress_log")->default('dean_validation');;
           $table->timestamps();
+
+          $table->unsignedInteger('purchase_id')->unique();
+          $table->foreign('purchase_id')->references('id')->on('purchases');
         });
     }
 
@@ -43,6 +48,6 @@ class CreatePurchasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchases');
+        Schema::dropIfExists('purchase_details');
     }
 }

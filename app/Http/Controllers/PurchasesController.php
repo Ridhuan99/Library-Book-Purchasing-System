@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Purchases;
+use App\Models\User;
+use App\Models\Purchase;
+use App\Models\Purchase_details;
 use Illuminate\Http\Request;
 
 class PurchasesController extends Controller
@@ -49,34 +51,45 @@ class PurchasesController extends Controller
           'author' => 'required',
           'publisher' => 'required',
           'subject_code' => 'required',
-          'quantity' => 'bail|required|numeric',
+          'quantity' => 'bail|required|numeric|min:1',
           'total_students' => 'bail|nullable|numeric',
           'price' => 'bail|nullable|numeric',
           'remark' => 'nullable',
 
         ]);
 
-        $purchase = new Purchases();
-        $purchase->name = $request->input('name');
-        $purchase->mmu_id = $request->input('mmu_id');
-        $purchase->extension_number = $request->input('extension_number');
-        $purchase->faculty = $request->input('faculty');
-        $purchase->format = $request->input('format');
-        $purchase->campus = $request->input('campus');
-        $purchase->category = $request->input('category');
-        $purchase->library = $request->input('library');
-        $purchase->title = $request->input('title');
-        $purchase->isbn = $request->input('isbn');
-        $purchase->author = $request->input('author');
-        $purchase->publisher = $request->input('publisher');
-        $purchase->subject_code = $request->input('subject_code');
-        $purchase->quantity = $request->input('quantity');
-        $purchase->total_students = $request->input('total_students');
-        $purchase->price = $request->input('price');
-        $purchase->remark = $request->input('remark');
+
+
+        $purchase = new Purchase();
         $purchase->save();
 
-        return redirect('requester.request-form');
+        $purchase_detail = new Purchase_details();
+        $purchase_detail->name = $request->input('name');
+        $purchase_detail->mmu_id = $request->input('mmu_id');
+        $purchase_detail->extension_number = $request->input('extension_number');
+        $purchase_detail->faculty = $request->input('faculty');
+        $purchase_detail->format = $request->input('format');
+        $purchase_detail->campus = $request->input('campus');
+        $purchase_detail->category = $request->input('category');
+        $purchase_detail->library = $request->input('library');
+        $purchase_detail->title = $request->input('title');
+        $purchase_detail->isbn = $request->input('isbn');
+        $purchase_detail->author = $request->input('author');
+        $purchase_detail->publisher = $request->input('publisher');
+        $purchase_detail->subject_code = $request->input('subject_code');
+        $purchase_detail->quantity = $request->input('quantity');
+        $purchase_detail->total_students = $request->input('total_students');
+        $purchase_detail->price = $request->input('price');
+        $purchase_detail->remark = $request->input('remark');
+
+
+        $purchase->purchase_details()->save($purchase_detail);
+
+
+
+        $request->session()->flash('status','The purchase has been submitted succesfully');
+
+        return redirect()->route('requester.request-form');
 
     }
 
