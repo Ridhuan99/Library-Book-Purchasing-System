@@ -12,10 +12,10 @@
 
     <div class="col-sm-5 rightside">
         <div class="row m-3">
-            <button type="button" class="p-5 btn btn-lg  btn-danger btn-block">Current Request</button>
+            <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('dean/requestlist',['faculty'=>'FACULTY OF COMPUTING AND INFORMATICS(FCI)'])}}">New Request</a>
         </div>
         <div class="row m-3">
-          <button type="button" class="p-5 btn btn-lg  btn-danger btn-block">History</button>
+            <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('dean/historylist',['faculty'=>'FACULTY OF COMPUTING AND INFORMATICS(FCI)'])}}">Request History</a>
         </div>
     </div>
 </div>

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Purchase;
 use App\Models\Inquiry;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InquiryController extends Controller
 {
@@ -37,7 +38,16 @@ class InquiryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      DB::table('inquiries')->insertGetId([
+          'message' => $request->input('comment'),
+          'name' => $request->input('name'),
+          'purchase_id' => $request->input('purchase_id'),
+          "created_at" =>  \Carbon\Carbon::now()
+
+          ]);
+
+      return redirect()->back();
+
     }
 
     /**

@@ -6,17 +6,24 @@ use App\Models\User;
 use App\Models\Purchase;
 use App\Models\Purchase_details;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PurchasesController extends Controller
 {
-    /**
+
+
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        // $purchases = DB::table('purchases')
+        //     ->join('purchase_details', 'purchases.purchase_id', '=', 'purchase_details.purchase_id')
+        //     ->join('users', 'purchases.user_id', '=', 'users.user_id')
+        //     ->get();
+        // return view('requester.myrequest',['purchases' =>  $purchases]);
     }
 
     /**
@@ -61,6 +68,7 @@ class PurchasesController extends Controller
 
 
         $purchase = new Purchase();
+        $purchase->user_id = $request->input('mmu_id');
         $purchase->save();
 
         $purchase_detail = new Purchase_details();
@@ -101,7 +109,9 @@ class PurchasesController extends Controller
      */
     public function show($id)
     {
-        //
+
+          // abort_if(!isset($this->post[$id]),404);
+          // return view('requester.details',['post' =>  $this->posts[$id]]);
     }
 
     /**
@@ -124,7 +134,13 @@ class PurchasesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $purchase = Purchase_details::findOrFail($id);
+        $purchase->progress_log = $request->progress_log;
+        $purchase->save();
+
+        return redirect()->back();
+
+        $request->session()->flash('status','Blog post was updated!');
     }
 
     /**
@@ -137,4 +153,5 @@ class PurchasesController extends Controller
     {
         //
     }
+
 }

@@ -12,13 +12,13 @@
 
     <div class="col-sm-5 rightside">
         <div class="row m-3">
-            <button type="button" class="p-5 btn btn-lg  btn-danger btn-block">My Request</button>
+            <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('requester/myrequest',['mmu_id'=>1171201767])}}">My Request</a>
         </div>
         <div class="row m-3">
-          <button type="button" class="p-5 btn btn-lg  btn-danger btn-block">My History</button>
+            <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('requester/history',['mmu_id'=>1171201767])}}">My History</a>
         </div>
         <div class="row m-3">
-          <button type="button" class=" p-5 btn btn-lg  btn-danger btn-block">Request Form</button>
+            <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('/request-form')}}">Request Form</a>
         </div>
     </div>
 </div>
