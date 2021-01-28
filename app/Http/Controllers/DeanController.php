@@ -13,7 +13,7 @@ class DeanController extends Controller
     public function getreqlist($faculty){
       $purchases = DB::table('purchase_details')
           ->select('purchase_id','title','quantity','created_at','status','mmu_id','name','faculty')
-          ->where('progress_log','!=','Dean Validation')
+          ->where('progress_log','Dean Validation')
           ->where('faculty',$faculty)
           ->where('status','pending')
           ->orderBy('created_at','desc')
@@ -38,7 +38,6 @@ class DeanController extends Controller
     public function gethistorylist($faculty){
       $purchases = DB::table('purchase_details')
           ->select('purchase_id','title','quantity','created_at','status','mmu_id','name','faculty')
-          ->where('progress_log','!=','Dean Validation')
           ->where('status','!=','pending')
           ->where('faculty',$faculty)
           ->orderBy('created_at','desc')

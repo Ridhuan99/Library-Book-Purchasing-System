@@ -12,10 +12,10 @@
 
     <div class="col-sm-5 rightside">
         <div class="row m-3">
-            <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('requester/myrequest',['mmu_id'=>1171201767])}}">My Request</a>
+            <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('requester/myrequest',['mmu_id'=>1234567894])}}">My Request</a>
         </div>
         <div class="row m-3">
-            <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('requester/history',['mmu_id'=>1171201767])}}">My History</a>
+            <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('requester/history',['mmu_id'=>1234567894])}}">My History</a>
         </div>
         <div class="row m-3">
             <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('/request-form')}}">Request Form</a>

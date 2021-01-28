@@ -156,34 +156,13 @@
                     </span>
                 </h6>
               </div>
-              <div class="col-12 mb-2 ">
-                  <h6>
-                      Progress Log :
-                  </h6>
-                      <ul class="progressbar py-5">
-                          @if ($purchase->progress_log === 'Dean Validation')
-                          <li class="active">Dean Validation</li>
-                          <li>Library Validation</li>
-                          <li>Purchasing</li>
-                          <li>Arrived</li>
-                          @elseif ($purchase->progress_log === 'Library Validation')
-                          <li class="active">Dean Validation</li>
-                          <li class="active">Library Validation</li>
-                          <li>Purchasing</li>
-                          <li>Arrived</li>
-                          @elseif ($purchase->progress_log === 'Purchasing')
-                          <li class="active">Dean Validation</li>
-                          <li class="active">Library Validation</li>
-                          <li class="active">Purchasing</li>
-                          <li>Arrived</li>
-                          @else
-                          <li class="active">Dean Validation</li>
-                          <li class="active">Library Validation</li>
-                          <li class="active">Purchasing</li>
-                          <li class="active">Arrived</li>
-                          @endif
-                      </ul>
-
+              <div class="col-12">
+                <h6 >
+                    Progress Log :
+                    <span class="font-weight-normal ">
+                        {{$purchase->progress_log}}
+                    </span>
+                </h6>
               </div>
             </div>
             @endforeach
@@ -203,9 +182,9 @@
             <div class="panel-body bg-white p-2">
                 <ul class="media-list p-0">
                     @foreach ($inquiries as $inquiry)
-                      <li class="media ">
-                          <div class="media-body ">
-                              <h6 class="media-heading text-info ">
+                      <li class="media">
+                          <div class="media-body">
+                              <h6 class="media-heading text-info">
                                     {{$inquiry->name}}
                               </h6>
                               <p>
@@ -215,15 +194,6 @@
                       </li>
                     @endforeach
                 </ul>
-                <div >
-                  <form class="needs-validation " action="{{route('inquiries.store')}}" method="post">
-                    @csrf
-                    <input type="text" name="comment" placeholder="Comment here" class="col-12 p-2">
-                    <input name="name" type="hidden" value="{{$purchase->name}}">
-                    <input name="purchase_id" type="hidden" value="{{$purchase->purchase_id}}">
-                    <button class="btn btn-danger btn-lg btn-block mt-1" type="submit">comment</button>
-                  </form>
-                </div>
             </div>
         </div>
         <!-- End fluid width widget -->

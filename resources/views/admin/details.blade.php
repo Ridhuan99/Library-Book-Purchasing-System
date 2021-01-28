@@ -154,7 +154,8 @@
                           <div class="col-6">
                             <select class="custom-select d-block w-100" id="progress_log" name="progress_log" required>
                                 <option value="">Choose...</option>
-                                <option>Library Validation</option>
+                                <option>Purchasing</option>
+                                <option>Arrived</option>
                             </select>
                           </div>
                           <div class="col-6">

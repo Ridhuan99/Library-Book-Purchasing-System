@@ -19,11 +19,7 @@ class PurchasesController extends Controller
      */
     public function index()
     {
-        // $purchases = DB::table('purchases')
-        //     ->join('purchase_details', 'purchases.purchase_id', '=', 'purchase_details.purchase_id')
-        //     ->join('users', 'purchases.user_id', '=', 'users.user_id')
-        //     ->get();
-        // return view('requester.myrequest',['purchases' =>  $purchases]);
+
     }
 
     /**
@@ -93,8 +89,6 @@ class PurchasesController extends Controller
 
         $purchase->purchase_details()->save($purchase_detail);
 
-
-
         $request->session()->flash('status','The purchase has been submitted succesfully');
 
         return redirect()->route('requester.request-form');
@@ -136,11 +130,18 @@ class PurchasesController extends Controller
     {
         $purchase = Purchase_details::findOrFail($id);
         $purchase->progress_log = $request->progress_log;
+        if ($request->progress_log === 'Arrived') {
+            $purchase->status = 'Accepted';
+        }
+
+        if ($request->status === 'Rejected') {
+            $purchase->status = 'Rejected';
+        }
         $purchase->save();
 
         return redirect()->back();
 
-        $request->session()->flash('status','Blog post was updated!');
+        // $request->session()->flash('status','Blog post was updated!');
     }
 
     /**

@@ -5,6 +5,7 @@ use App\Http\Controllers\ PurchasesController;
 use App\Http\Controllers\ RequesterController;
 use App\Http\Controllers\ DeanController;
 use App\Http\Controllers\ InquiryController;
+use App\Http\Controllers\ AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,16 @@ Route::get('/', function () {
 
 // admin
 Route::get('/admin-dashboard', function () {
-    return view('library-admin.dashboard');
+    return view('admin.dashboard');
 })->name('admin-dashboard');
 
+Route::get('/admin/requestlist', [AdminController::class,'getreqlist']);
+
+Route::get('/admin/requestlist/{id}', [AdminController::class,'getreq']);
+
+Route::get('/admin/historylist', [AdminController::class,'gethistorylist']);
+
+Route::get('/admin/historylist/{id}', [AdminController::class,'gethistory']);
 
 // dean
 Route::get('/dean-dashboard', function () {
