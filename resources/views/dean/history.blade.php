@@ -29,21 +29,27 @@
                         <!--Table head-->
                         <!--Table body-->
                         <tbody>
-                          @foreach ($purchases as $purchase)
+                          @if ($purchases->count() == 0)
                             <tr>
-                                <th scope="row">{{$purchase->purchase_id}}</th>
-                                <td>{{$purchase->title}}</td>
-                                <td>{{$purchase->quantity}}</td>
-                                <td>{{$purchase->status}}</td>
-                                <td>{{$purchase->created_at}}</td>
-                                <td>{{$purchase->mmu_id}}</td>
-                                <td>{{$purchase->name}}</td>
-                                <td>{{$purchase->faculty}}</td>
-                                <td>
-                                  <a class=" btn btn-lg  btn-danger btn-block" href="{{url('dean/historylist',['faculty'=>$purchase->faculty,'id'=>$purchase->purchase_id])}}">GO</a>
-                                </td>
+                                <td colspan="6" >No record found</td>
                             </tr>
-                          @endforeach
+                          @else
+                            @foreach ($purchases as $purchase)
+                              <tr>
+                                  <th scope="row">{{$purchase->purchase_id}}</th>
+                                  <td>{{$purchase->title}}</td>
+                                  <td>{{$purchase->quantity}}</td>
+                                  <td>{{$purchase->status}}</td>
+                                  <td>{{$purchase->created_at}}</td>
+                                  <td>{{$purchase->mmu_id}}</td>
+                                  <td>{{$purchase->name}}</td>
+                                  <td>{{$purchase->faculty}}</td>
+                                  <td>
+                                    <a class=" btn btn-lg  btn-danger btn-block" href="{{url('dean/historylist',['faculty'=>$purchase->faculty,'id'=>$purchase->purchase_id])}}">GO</a>
+                                  </td>
+                              </tr>
+                            @endforeach
+                          @endif
                         </tbody>
                         <!--Table body-->
                     </table>

@@ -18,7 +18,7 @@
           <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('admin/historylist')}}">History</a>
         </div>
         <div class="row m-3">
-          <button type="button" class=" p-5 btn btn-lg  btn-danger btn-block">Edit Form</button>
+            <a class="p-5 btn btn-lg  btn-danger btn-block" href="{{url('admin/edit-form')}}">Edit Form</a>
         </div>
     </div>
 </div>

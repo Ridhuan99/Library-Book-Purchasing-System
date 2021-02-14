@@ -41,8 +41,8 @@ class PurchasesController extends Controller
     public function store(Request $request)
     {
           $validated = $request->validate([
-          'name' => 'required',
-          'mmu_id' => 'bail|required|size:10',
+          'name' => 'required|exists:App\Models\User,name',
+          'mmu_id' => 'bail|required|size:10|exists:App\Models\User,user_id',
           'extension_number'=> 'bail|nullable|numeric',
           'faculty' => 'required',
           'format' => 'required',
@@ -140,8 +140,6 @@ class PurchasesController extends Controller
         $purchase->save();
 
         return redirect()->back();
-
-        // $request->session()->flash('status','Blog post was updated!');
     }
 
     /**
@@ -154,5 +152,7 @@ class PurchasesController extends Controller
     {
         //
     }
+
+
 
 }

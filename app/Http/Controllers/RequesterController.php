@@ -42,7 +42,7 @@ class RequesterController extends Controller
       $purchases = DB::table('purchase_details')
           ->select('purchase_id','title','quantity','status','created_at','mmu_id')
           ->where('mmu_id', $mmu_id)
-          ->where('status','accepted')
+          ->where('status','!=','pending')
           ->get();
       return view('requester.history',['purchases' =>  $purchases]);
     }
@@ -60,6 +60,13 @@ class RequesterController extends Controller
           ->get();
 
       return view('requester.history-details',['purchases' =>  $purchases, 'inquiries' =>  $inquiries]);
+    }
+
+    public function getformat(){
+
+      $formats = DB::table('formats')
+          ->get();
+      return view('requester.request-form',['formats' =>  $formats]);
     }
 
 }

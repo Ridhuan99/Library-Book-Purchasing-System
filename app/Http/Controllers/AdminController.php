@@ -55,4 +55,10 @@ class AdminController extends Controller
 
     return view('admin.historydetails',['purchases' =>  $purchases, 'inquiries' =>  $inquiries]);
   }
+
+  public function getformat(){
+    $formats = DB::table('formats')
+        ->get();
+    return view('admin.edit-form',['formats' =>  $formats]);
+  }
 }

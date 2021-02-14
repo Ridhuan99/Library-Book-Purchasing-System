@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use App\Models\User;
 use App\Models\Purchase;
 use App\Models\Purchase_details;
@@ -59,12 +59,14 @@ class DeanController extends Controller
       return view('dean.historydetails',['purchases' =>  $purchases, 'inquiries' =>  $inquiries]);
     }
 
-    public function editlog(){
-      //
+    public function updateall(Request $request)
+    {
+      dd(request()->all());
+        // $purchase = Purchase_details::findOrFail($id);
+        // $purchase->progress_log = "Library Validation";
+        // $purchase->save();
+        //
+        // return redirect()->back();
+        // dd($request);
     }
-
-    public function editstatus(){
-      //
-    }
-
 }

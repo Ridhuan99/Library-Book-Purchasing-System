@@ -10,6 +10,7 @@ class Purchase extends Model
     use HasFactory;
 
     protected $table = 'purchases';
+    public $fillable = ['user_id'];
 
 
     public function purchase_details(){

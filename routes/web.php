@@ -6,6 +6,9 @@ use App\Http\Controllers\ RequesterController;
 use App\Http\Controllers\ DeanController;
 use App\Http\Controllers\ InquiryController;
 use App\Http\Controllers\ AdminController;
+use App\Http\Controllers\ PurchaseImportController;
+use App\Http\Controllers\ FormatController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +43,9 @@ Route::get('/admin/historylist', [AdminController::class,'gethistorylist']);
 
 Route::get('/admin/historylist/{id}', [AdminController::class,'gethistory']);
 
+Route::get('/admin/edit-form',[AdminController::class,'getformat']);
+
+
 // dean
 Route::get('/dean-dashboard', function () {
     return view('dean.dashboard');
@@ -53,12 +59,19 @@ Route::get('/dean/historylist/{faculty}', [DeanController::class,'gethistorylist
 
 Route::get('/dean/historylist/{faculty}/{id}', [DeanController::class,'gethistory']);
 
+// Route::post('/update-multiple', function(Request $request){
+//   if(Request::ajax()){
+//     return Response::json(Request::all());
+//   }
+// })->name('update.multiple');
 
 
+Route::post('/update-multiple',[DeanController::class,'updateall'])->name('update.multiple');
 
 
 Route::resource('purchases', PurchasesController::class);
 Route::resource('inquiries', InquiryController::class);
+Route::resource('formats', FormatController::class);
 
 // Requester Controller
 
@@ -74,8 +87,8 @@ Route::get('/requester/history/{mmu_id}',[RequesterController::class,'gethistory
 
 Route::get('/requester/history/{mmu_id}/{id}', [RequesterController::class,'gethistory']);
 
+Route::post('/import', [PurchaseImportController::class,'store']);
 
 
-Route::get('/request-form', function () {
-    return view('requester.request-form');
-})->name('requester.request-form');
+
+Route::get('/request-form',[RequesterController::class,'getformat']);

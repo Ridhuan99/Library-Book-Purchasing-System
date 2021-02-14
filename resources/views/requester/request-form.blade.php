@@ -8,11 +8,12 @@
           {{session('status')}}
         </div>
       @endif
+
         <form class="needs-validation p-4" action="{{route('purchases.store')}}" method="post">
           @csrf
             <div class="row">
                 <div class="col-sm-6 mb-3">
-                    <label for="name">Name</label>
+                    <label for="name">Name*</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="etc: Ng Yan Yan" value="{{old('name')}}" required>
                     @error ('name')
                       <div class="alert alert-danger m-1">
@@ -22,7 +23,7 @@
                 </div>
 
                 <div class="col-sm-6 mb-3">
-                    <label for="mmu_id">MMU ID:</label>
+                    <label for="mmu_id">MMU ID*</label>
                     <input type="text" class="form-control" id="mmu_id" name="mmu_id" placeholder="etc: 1101108567" value="{{old('mmu_id')}}" required>
                     @error ('mmu_id')
                       <div class="alert alert-danger m-1">
@@ -34,7 +35,7 @@
 
             <div class="row">
                 <div class="col-sm-6 mb-3">
-                    <label for="extension_number">Extension Number:</label>
+                    <label for="extension_number">Extension Number</label>
                     <input type="text" class="form-control" id="extension_number" name="extension_number" placeholder="" value="{{old('extension_number')}}" >
                     @error ('extension_number')
                       <div class="alert alert-danger m-1">
@@ -43,22 +44,22 @@
                     @enderror
                 </div>
                 <div class="col-sm-6 mb-3">
-                    <label for="faculty">Faculty</label>
+                    <label for="faculty">Faculty*</label>
                     <select class="custom-select d-block w-100" id="faculty" name="faculty"  required>
                         <option value="">Choose...</option>
-                        <option>FACULTY OF APPLIED COMMUNICATION(FAC)</option>
-                        <option>FACULTY OF BUSINESS(FOB)</option>
-                        <option>FACULTY OF cINEMATIC ARTS(FCA)</option>
-                        <option>FACULTY OF COMPUTING AND INFORMATICS(FCI)</option>
-                        <option>FACULTY OF CREATIVE MULTIMEDIA(FCM)</option>
-                        <option>FACULTY OF ENGINEERING(FOE)</option>
-                        <option>FACULTY OF ENGINEERING AND TECHNOLOGY(FET)</option>
-                        <option>FACULTY OF INFORMATION SCIENCE AND TECHNOLOGY(FIST)</option>
-                        <option>FACULTY OF LAW(FOL)</option>
-                        <option>FACULTY OF MANAGEMENT(FOM)</option>
-                        <option>PRESIDENT'S OFFICE(PRES)</option>
-                        <option>VICE PRESIDENT, ACADEMIC(VP ACAD)</option>
-                        <option>VICE PRESIDENT, R&d AND INNOVATION(VP RDI)</option>
+                        <option>FAC</option>
+                        <option>FOB</option>
+                        <option>FCA</option>
+                        <option>FCI</option>
+                        <option>FCM</option>
+                        <option>FOE</option>
+                        <option>FET</option>
+                        <option>FIST</option>
+                        <option>FOL</option>
+                        <option>FOM</option>
+                        <option>PRES</option>
+                        <option>VP ACAD</option>
+                        <option>VP RDI</option>
                     </select>
                     @error ('faculty')
                       <div class="alert alert-danger m-1">
@@ -71,11 +72,13 @@
 
             <div class="row">
                 <div class="col-sm-6 mb-3">
-                    <label for="format">Format</label>
+                    <label for="format">Format*</label>
                     <select class="custom-select d-block w-100" id="format" name="format" required>
                         <option value="">Choose...</option>
-                        <option>Printed</option>
-                        <option>e-book</option>
+                        @foreach ($formats as $format)
+                          <option>{{$format->value}}</option>
+                        @endforeach
+
                     </select>
                     @error ('format')
                       <div class="alert alert-danger m-1">
@@ -84,7 +87,7 @@
                     @enderror
                 </div>
                 <div class="col-sm-6 mb-3">
-                    <label for="campus">Campus</label>
+                    <label for="campus">Campus*</label>
                     <select class="custom-select d-block w-100" id="campus" name="campus" required>
                         <option value="">Choose...</option>
                         <option>Cyberjaya</option>
@@ -101,7 +104,7 @@
 
             <div class="row">
                 <div class="col-sm-6 mb-3">
-                    <label for="category">Category</label>
+                    <label for="category">Category*</label>
                     <select class="custom-select d-block w-100" id="category" name="category" required>
                         <option value="">Choose...</option>
                         <option>Red Spot</option>
@@ -116,11 +119,11 @@
                 </div>
 
                 <div class="col-sm-6 mb-3">
-                    <label for="library">Library</label>
+                    <label for="library">Library*</label>
                     <select class="custom-select d-block w-100" id="library" name="library" required>
                         <option value="">Choose...</option>
                         <option>MMU Law Library</option>
-                        <option>MMU Melaka</option>
+                        <option>MMU Melaka Library</option>
                         <option>MMU Johor Library</option>
                         <option>MMU Research Library</option>
                         <option>MMU Cyberjaya Library</option>
@@ -136,7 +139,7 @@
 
             <div class="row">
                 <div class="col-sm-6 mb-3">
-                    <label for="title">Title</label>
+                    <label for="title">Title*</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="etc: Introduction to Java" value="{{old('title')}}" required>
                     @error ('title')
                       <div class="alert alert-danger m-1">
@@ -146,7 +149,7 @@
                 </div>
 
                 <div class="col-sm-6 mb-3">
-                    <label for="isbn">ISBN</label>
+                    <label for="isbn">ISBN*</label>
                     <input type="text" class="form-control" id="isbn" name="isbn" placeholder="etc: 978-3-16-148410-0" value="{{old('isbn')}}" required>
                     @error ('isbn')
                       <div class="alert alert-danger m-1">
@@ -169,7 +172,7 @@
                 </div>
 
                 <div class="col-sm-6 mb-3">
-                    <label for="publisher">Publisher</label>
+                    <label for="publisher">Publisher*</label>
                     <input type="text" class="form-control" id="publisher" name="publisher" placeholder="" value="{{old('publisher')}}" required>
                     @error ('publisher')
                       <div class="alert alert-danger m-1">
@@ -181,7 +184,7 @@
 
             <div class="row">
                 <div class="col-sm-6 mb-3">
-                    <label for="subject_code">Subject Code</label>
+                    <label for="subject_code">Subject Code*</label>
                     <input type="text" class="form-control" id="subject_code" name="subject_code" placeholder="etc: MUR223J" value="{{old('subject_code')}}" required>
                     @error ('subject_code')
                       <div class="alert alert-danger m-1">
@@ -191,7 +194,7 @@
                 </div>
 
                 <div class="col-sm-6 mb-3">
-                    <label for="quantity">Quantity</label>
+                    <label for="quantity">Quantity*</label>
                     <input type="number" class="form-control" id="quantity" name="quantity" placeholder="etc: 10" value="{{old('quantity')}}" required>
                     @error ('quatity')
                       <div class="alert alert-danger m-1">
@@ -250,16 +253,22 @@
               <p class="card-text">2. If the resources is not available, you can proceed with your book purchase request application</p>
               <p class="card-text">3. Your request will be validated by your respective Dean and Library Management</p>
               <p class="card-text">4. You can check your request status in email or login into LBPS system.</p>
-              <p class="card-text">5. You can enter the link of your intended resource to enable the auto-fill form feature below:</p>
+              <p class="card-text">5. You can upload a csv file for multiple book request.</p>
+              <p class="card-text">5. Make sure to follow the template   <a href="{{ url('/sample/PurchaseSample.xlsx') }}"> Download Sample</a></p>
 
-              <form class="needs-validation" novalidate>
+              @if (isset($errors) && $errors->any())
+                <div class="alert alert-danger">
+                  @foreach ($errors->all() as $error)
+                    {{$error}}
+                  @endforeach
+                </div>
+              @endif
+              <form class="needs-validation" method="post" action="/import" enctype="multipart/form-data" novalidate>
+                @csrf
                 <div class="col-12 mb-3">
-                    <label for="url">URL</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                      {{-- <div class="alert alert-danger">
-                          Valid extension number is required.
-                      </div> --}}
-                      <button class="btn btn-danger btn-lg btn-block mt-3" type="submit">Search</button>
+                    <label for="url">Upload File</label>
+                      <input type="file" name="file" class="form-control" id="file" />
+                      <button class="btn btn-danger btn-lg btn-block mt-3" type="submit">Upload File</button>
                 </div>
               </form>
           </div>
