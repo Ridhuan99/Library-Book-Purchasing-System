@@ -64,7 +64,7 @@ class PurchaseImport implements ToCollection , WithHeadingRow, WithValidation, S
       return[
         '*.mmuid'=>['exists:App\Models\User,user_id'],
         '*.name'=>['exists:App\Models\User,name'],
-        '*.faculty'=>['required'],
+        '*.faculty'=>['required','regex:/^[A-Z]+$/u'],
         '*.format'=>['required'],
         '*.category'=>['required'],
         '*.library'=>['required'],

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Http\Request;;
 use App\Models\User;
 use App\Models\Purchase;
 use App\Models\Purchase_details;
@@ -12,7 +12,7 @@ class DeanController extends Controller
 {
     public function getreqlist($faculty){
       $purchases = DB::table('purchase_details')
-          ->select('purchase_id','title','quantity','created_at','status','mmu_id','name','faculty')
+          ->select('purchase_id','title','quantity','created_at','price','subject_code','name','faculty')
           ->where('progress_log','Dean Validation')
           ->where('faculty',$faculty)
           ->where('status','pending')
@@ -61,12 +61,17 @@ class DeanController extends Controller
 
     public function updateall(Request $request)
     {
-      dd(request()->all());
-        // $purchase = Purchase_details::findOrFail($id);
-        // $purchase->progress_log = "Library Validation";
-        // $purchase->save();
-        //
-        // return redirect()->back();
-        // dd($request);
+
+      $size = $request->counter;
+
+      for ($i=0; $i < $size ; $i++) {
+        DB::table('purchase_details')
+            ->where('purchase_id',$request->cb[$i])
+            ->update(['progress_log' => "Library Validation"]);
+      }
+
+
+
+        return response()->json($request);
     }
 }

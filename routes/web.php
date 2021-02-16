@@ -58,14 +58,6 @@ Route::get('/dean/requestlist/{faculty}/{id}', [DeanController::class,'getreq'])
 Route::get('/dean/historylist/{faculty}', [DeanController::class,'gethistorylist']);
 
 Route::get('/dean/historylist/{faculty}/{id}', [DeanController::class,'gethistory']);
-
-// Route::post('/update-multiple', function(Request $request){
-//   if(Request::ajax()){
-//     return Response::json(Request::all());
-//   }
-// })->name('update.multiple');
-
-
 Route::post('/update-multiple',[DeanController::class,'updateall'])->name('update.multiple');
 
 

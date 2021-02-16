@@ -5,7 +5,7 @@
     <h1>{{$key}}.{{$purchase['title']}}</h1>
   @endforeach --}}
   <div class="myrequest-page row">
-    <div class="card col-11 m-4 card-list">
+    <div class="card ">
                 <div class="card-body">
                     <!--Table-->
                     <div class="card-title">

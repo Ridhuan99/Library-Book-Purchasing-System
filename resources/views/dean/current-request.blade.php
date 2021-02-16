@@ -4,8 +4,8 @@
   {{-- @foreach ($purchases as $key => $purchase)
     <h1>{{$key}}.{{$purchase['title']}}</h1>
   @endforeach --}}
-  <div class="myrequest-page row">
-    <div class="card col-11 m-4 card-list">
+  <div class="myrequest-page row container-fluid">
+    <div class="card">
                 <div class="card-body">
                     <!--Table-->
                     <div class="card-title">
@@ -17,15 +17,14 @@
                           <!--Table head-->
                           <thead class="mdb-color thead-dark ">
                               <tr class="text-white">
-                                  <th><button type="submit" class="btn btn-info" id="approveall">Approve All</button><input type="checkbox"  id="checkAll"></th>
+                                  <th><button type="submit" class="btn btn-info" id="approveall">Approve All</button><br><input type="checkbox"  id="checkAll"></th>
                                   <th>Purchase ID</th>
                                   <th>Title</th>
                                   <th>Quantity</th>
-                                  <th>Status</th>
                                   <th>Request Date</th>
-                                  <th>Requester MMU ID</th>
                                   <th>Requester Name</th>
-                                  <th>Requester Faculty</th>
+                                  <th>Price PerBook</th>
+                                  <th>Subject Code</th>
                                   <th>Details</th>
                               </tr>
                           </thead>
@@ -43,11 +42,10 @@
                                     <th scope="row">{{$purchase->purchase_id}}</th>
                                     <td>{{$purchase->title}}</td>
                                     <td>{{$purchase->quantity}}</td>
-                                    <td>{{$purchase->status}}</td>
                                     <td>{{$purchase->created_at}}</td>
-                                    <td>{{$purchase->mmu_id}}</td>
                                     <td>{{$purchase->name}}</td>
-                                    <td>{{$purchase->faculty}}</td>
+                                    <td>{{$purchase->price}}</td>
+                                    <td>{{$purchase->subject_code}}</td>
                                     <td>
                                       <a class=" btn btn-lg  btn-danger btn-block" href="{{url('dean/requestlist',['faculty'=>$purchase->faculty,'id'=>$purchase->purchase_id])}}">GO</a>
                                     </td>
@@ -93,8 +91,10 @@ $(document).ready(function(){
      let _token = $("input[name=_token]").val();
 
      var cb = [];
+     var counter = 0;
      $.each($('.cb:checked'), function() {
      cb.push($(this).val());
+     counter = counter + 1;
      });
 
      $.ajax({
@@ -103,10 +103,11 @@ $(document).ready(function(){
        dataType: 'JSON',
        data:{
          "cb":cb,
-         "_token":_token
+         "_token":_token,
+         "counter": counter
        },
        success: function (response) { // What to do if we succeed
-          console.log(response)
+          location.reload(true);
        }
      });
   });
